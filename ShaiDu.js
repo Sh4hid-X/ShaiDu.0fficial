@@ -21,23 +21,23 @@ global.client = new Object({
   getTime: function (option) {
         switch (option) {
             case "seconds":
-                return `${moment.tz("Asia/Kolkata").format("ss")}`;
+                return `${moment.tz("Asia/Karachi").format("ss")}`;
             case "minutes":
-                return `${moment.tz("Asia/Kolkata").format("mm")}`;
+                return `${moment.tz("Asia/Karachi").format("mm")}`;
             case "hours":
-                return `${moment.tz("Asia/Kolkata").format("HH")}`;
+                return `${moment.tz("Asia/Karachi").format("HH")}`;
             case "date": 
-                return `${moment.tz("Asia/Kolkata").format("DD")}`;
+                return `${moment.tz("Asia/Karachi").format("DD")}`;
             case "month":
-                return `${moment.tz("Asia/Kolkata").format("MM")}`;
+                return `${moment.tz("Asia/Karachi").format("MM")}`;
             case "year":
-                return `${moment.tz("Asia/Kolkata").format("YYYY")}`;
+                return `${moment.tz("Asia/Karachi ").format("YYYY")}`;
             case "fullHour":
-                return `${moment.tz("Asia/Kolkata").format("HH:mm:ss")}`;
+                return `${moment.tz("Asia/Karachi").format("HH:mm:ss")}`;
             case "fullYear":
-                return `${moment.tz("Asia/Kolkata").format("DD/MM/YYYY")}`;
+                return `${moment.tz("Asia/Karachi ").format("DD/MM/YYYY")}`;
             case "fullTime":
-                return `${moment.tz("Asia/Kolkata").format("HH:mm:ss DD/MM/YYYY")}`;
+                return `${moment.tz("Asia/Karachi").format("HH:mm:ss DD/MM/YYYY")}`;
         }
   }
 });
@@ -144,10 +144,11 @@ function onBot({ models: botModel }) {
         global.config.version = '1.2.14'
         global.client.timeStart = new Date().getTime(),
             function () {
-                const listCommand = readdirSync(global.client.mainPath + '/Priyansh/commands').filter(command => command.endsWith('.js') && !command.includes('example') && !global.config.commandDisabled.includes(command));
+                const listCommand = readdirSync(global.client.mainPath + '/ShaiDu/
+').filter(command => command.endsWith('.js') && !command.includes('example') && !global.config.commandDisabled.includes(command));
                 for (const command of listCommand) {
                     try {
-                        var module = require(global.client.mainPath + '/Priyansh/commands/' + command);
+                        var module = require(global.client.mainPath + '/ShaiDu/commands/' + command);
                         if (!module.config || !module.run || !module.config.commandCategory) throw new Error(global.getText('priyansh', 'errorFormat'));
                         if (global.client.commands.has(module.config.name || '')) throw new Error(global.getText('priyansh', 'nameExist'));
                         if (!module.languages || typeof module.languages != 'object' || Object.keys(module.languages).length == 0) logger.loader(global.getText('priyansh', 'notFoundLanguage', module.config.name), 'warn');
@@ -314,3 +315,4 @@ function onBot({ models: botModel }) {
 })();
 
 process.on('unhandledRejection', (err, p) => {});
+ => {});
